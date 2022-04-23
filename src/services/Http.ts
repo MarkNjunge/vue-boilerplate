@@ -37,13 +37,13 @@ export class Http {
           //   return;
           // }
 
-          // store.commit("ui/addBanner", { type: "error", message: result.message, timeout: 0 });
+          store.commit("ui/addBanner", { type: "error", message: result.message, timeout: 0 });
           reject(result);
         })
         .catch(err => {
           console.error(err);
           reject(err);
-          // store.commit("ui/addBanner", { type: "error", message: err.message, timeout: 0 });
+          store.commit("ui/addBanner", { type: "error", message: err.message, timeout: 0 });
         }),
     );
   }
