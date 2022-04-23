@@ -1,0 +1,40 @@
+
+.form-group {
+  @apply flex flex-col;
+}
+
+.form-label {
+  @apply text-secondary;
+}
+
+.form-input, input {
+  @apply mt-1 py-[6px] px-[10px] text-primary rounded bg-back-light border border-back-light w-full;
+
+  &:focus {
+    @apply border-back-lighter outline-none;
+  }
+
+  &:disabled {
+    @apply bg-back cursor-not-allowed text-secondary;
+  }
+
+  &::placeholder {
+    @apply text-tertiary;
+  }
+}
+
+.button {
+  @apply py-2 px-5 bg-brand text-onBrand rounded-md font-bold;
+
+  &:hover {
+    @apply bg-brand-700;
+  }
+}
+
+.button-danger {
+  @apply bg-red-400;
+
+  &:hover {
+    @apply bg-red-500;
+  }
+}
