@@ -19,11 +19,11 @@ export const authModule: Module<AuthState, RootState> = {
     })
   },
   actions: {
-    async signIn(context: ActionContext<AuthState, RootState>): Promise<boolean> {
+    signIn(context: ActionContext<AuthState, RootState>): boolean {
       context.commit("setSignedIn", true);
       return true;
     },
-    async signOut(context: ActionContext<AuthState, RootState>): Promise<boolean> {
+    signOut(context: ActionContext<AuthState, RootState>): boolean {
       context.commit("setSignedIn", false);
       return false;
     },

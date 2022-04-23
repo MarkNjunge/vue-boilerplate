@@ -18,12 +18,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         name: "home",
-        component: () => import(/* webpackChunkName: "home" */ "../pages/Home.vue"),
+        component: async () => import(/* webpackChunkName: "home" */ "../pages/Home.vue"),
       },
       {
         path: "/post/:id",
         name: "post",
-        component: () => import(/* webpackChunkName: "post" */ "../pages/Post.vue"),
+        component: async () => import(/* webpackChunkName: "post" */ "../pages/Post.vue"),
         meta: {
           requiresAuth: true
         }
@@ -37,7 +37,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/login",
         name: "login",
-        component: () => import(/* webpackChunkName: "login" */ "../pages/auth/Login.vue"),
+        component: async () => import(/* webpackChunkName: "login" */ "../pages/auth/Login.vue"),
         meta: {
           skipWhenAuthed: true
         }

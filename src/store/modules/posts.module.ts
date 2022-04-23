@@ -24,12 +24,15 @@ export const postsModule: Module<PostsState, RootState> = {
     async getPosts(context: ActionContext<PostsState, RootState>, {
       start = 0,
       limit = 10
-    }: { start: number, limit: number }): Promise<Post[]> {
+    }: { start: number; limit: number }): Promise<Post[]> {
       const posts = await Http.get<Post[]>(`/posts?_start=${start}&_limit=${limit}`);
       context.commit("setPosts", posts);
       return posts;
     },
-    async getPost(context: ActionContext<PostsState, RootState>, { id }: { id: string }): Promise<{ post: Post, comments: Comment[] }> {
+    async getPost(
+      context: ActionContext<PostsState, RootState>,
+      { id }: { id: string }
+    ): Promise<{ post: Post; comments: Comment[] }> {
       const post = await Http.get<Post>(`/posts/${id}`);
       const comments = await Http.get<Comment[]>(`/posts/${id}/comments`);
 

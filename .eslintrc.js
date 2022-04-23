@@ -3,7 +3,11 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ["plugin:vue/vue3-essential", "eslint:recommended", "@vue/typescript/recommended"],
+  extends: [
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+  ],
   parserOptions: {
     ecmaVersion: 2020,
   },
@@ -14,4 +18,20 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": "off",
     indent: ["error", 2],
   },
+  overrides: [
+    {
+      files: ["*.ts"],
+      extends: [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "@marknjunge/eslint-config-ts"
+      ],
+      rules: {
+        "no-console": "off"
+      },
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ["./tsconfig.json"],
+      },
+    }
+  ]
 };
