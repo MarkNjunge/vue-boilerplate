@@ -15,19 +15,22 @@ import { defineComponent } from "vue";
 import PostItem from "@/components/PostItem.vue";
 import Loader from "@/components/Loader.vue";
 import { errorHandler } from "@/utils";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "Home",
   components: { Loader, PostItem },
+  computed: {
+    ...mapGetters({ posts: "posts/posts" })
+  },
   data() {
     return {
       loading: false,
-      posts: [],
     };
   },
   async created() {
     this.loading = true;
-    this.posts = await this.$store.dispatch("posts/getPosts", {}).catch(errorHandler);
+    await this.$store.dispatch("posts/getPosts", {}).catch(errorHandler);
     this.loading = false;
   },
 });
