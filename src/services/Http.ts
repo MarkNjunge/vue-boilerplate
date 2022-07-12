@@ -18,7 +18,7 @@ export class Http {
     if (res.ok) {
       return result;
     } else {
-      throw new Error(result.message ?? res.statusText);
+      throw new Error(result.message ?? `An error occurred: ${res.status}`);
     }
   }
 }
