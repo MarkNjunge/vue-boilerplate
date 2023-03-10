@@ -9,11 +9,21 @@ export class Http {
     const headers = new Headers();
     headers.set("Content-Type", "application/json");
 
-    return Http.request<T>(endpoint, { method: "POST", headers, body: JSON.stringify(data) });
+    return Http.request<T>(endpoint, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(data),
+    });
   }
 
-  private static async request<T>(endpoint: string, init: RequestInit): Promise<T> {
-    const res = await fetch(`${config.apiUrl}${endpoint}`, { ...init, credentials: "include" });
+  private static async request<T>(
+    endpoint: string,
+    init: RequestInit
+  ): Promise<T> {
+    const res = await fetch(`${config.apiUrl}${endpoint}`, {
+      ...init,
+      credentials: "include",
+    });
     const result = await res.json();
     if (res.ok) {
       return result;

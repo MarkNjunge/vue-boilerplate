@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 import store from "@/store";
 import Shell from "@/pages/_shell.vue";
 import AuthShell from "@/pages/auth/_auth.shell.vue";
@@ -18,17 +19,17 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "",
         name: "home",
-        component: async () => import(/* webpackChunkName: "home" */ "../pages/Home.vue"),
+        component: async () => import("../pages/Home.vue"),
       },
       {
         path: "/post/:id",
         name: "post",
-        component: async () => import(/* webpackChunkName: "post" */ "../pages/Post.vue"),
+        component: async () => import("../pages/Post.vue"),
         meta: {
-          requiresAuth: true
-        }
-      }
-    ]
+          requiresAuth: true,
+        },
+      },
+    ],
   },
   {
     path: "",
@@ -37,27 +38,30 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/login",
         name: "login",
-        component: async () => import(/* webpackChunkName: "login" */ "../pages/auth/Login.vue"),
+        component: async () => import("../pages/auth/Login.vue"),
         meta: {
-          skipWhenAuthed: true
-        }
-      }
-    ]
-  }
+          skipWhenAuthed: true,
+        },
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 
 router.beforeEach(async (to, from, next) => {
   const isSignedIn: boolean = await store.getters["auth/isSignedIn"];
 
-  if ((to.meta.requiresAuth === true) && !isSignedIn) {
-    store.commit("ui/addBanner", { type: "error", message: "Login is required" });
+  if (to.meta.requiresAuth === true && !isSignedIn) {
+    store.commit("ui/addBanner", {
+      type: "error",
+      message: "Login is required",
+    });
     next({ name: "login", replace: true });
-  } else if ((to.meta.skipWhenAuthed === true) && isSignedIn) {
+  } else if (to.meta.skipWhenAuthed === true && isSignedIn) {
     next({ name: "home", replace: true });
   } else {
     next();

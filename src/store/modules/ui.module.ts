@@ -1,6 +1,6 @@
-import { RootState } from "@/store/lib/state";
-import { Module } from "vuex";
-import { Banner } from "@/types/banner.type";
+import type { RootState } from "@/store/lib/state";
+import type { Module } from "vuex";
+import type { Banner } from "@/types/banner.type";
 
 interface UiState {
   banners: Banner[];
@@ -17,7 +17,7 @@ export const uiModule: Module<UiState, RootState> = {
   mutations: {
     addBanner: (state, { type, message, timeout }: Banner) => {
       const id = Math.floor(parseInt(Math.random().toFixed(4)) * 10000);
-      (state.banners).push({
+      state.banners.push({
         id,
         type,
         message,

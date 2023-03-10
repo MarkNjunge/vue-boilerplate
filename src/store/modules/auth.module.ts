@@ -1,5 +1,5 @@
-import { RootState } from "@/store/lib/state";
-import { ActionContext, Module } from "vuex";
+import type { RootState } from "@/store/lib/state";
+import type { ActionContext, Module } from "vuex";
 
 interface AuthState {
   isSignedIn: boolean;
@@ -8,15 +8,15 @@ interface AuthState {
 export const authModule: Module<AuthState, RootState> = {
   namespaced: true,
   state: {
-    isSignedIn: false
+    isSignedIn: false,
   },
   getters: {
-    isSignedIn: state => state.isSignedIn
+    isSignedIn: state => state.isSignedIn,
   },
   mutations: {
-    setSignedIn: ((state, payload) => {
+    setSignedIn: (state, payload) => {
       state.isSignedIn = payload;
-    })
+    },
   },
   actions: {
     signIn(context: ActionContext<AuthState, RootState>): boolean {

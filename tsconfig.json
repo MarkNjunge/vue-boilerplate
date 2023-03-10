@@ -1,4 +1,6 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "vite.config.ts","src/**/*", "src/**/*.vue"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -11,10 +13,11 @@
     "forceConsistentCasingInFileNames": true,
     "useDefineForClassFields": true,
     "sourceMap": true,
+    "noImplicitAny": false,
     "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
+//    "types": [
+//      "webpack-env"
+//    ],
     "paths": {
       "@/*": [
         "src/*"
@@ -27,14 +30,16 @@
       "scripthost"
     ]
   },
-  "include": [
+  "_include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

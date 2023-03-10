@@ -1,7 +1,7 @@
-import { RootState } from "@/store/lib/state";
-import { ActionContext, Module } from "vuex";
+import type { RootState } from "@/store/lib/state";
+import type { ActionContext, Module } from "vuex";
 import { Http } from "@/services/Http";
-import { Post } from "@/types";
+import type { Post } from "@/types";
 
 interface PostsState {
   posts: Post[];
@@ -10,22 +10,24 @@ interface PostsState {
 export const postsModule: Module<PostsState, RootState> = {
   namespaced: true,
   state: {
-    posts: []
+    posts: [],
   },
   getters: {
-    posts: state => state.posts
+    posts: state => state.posts,
   },
   mutations: {
-    setPosts: ((state, payload) => {
+    setPosts: (state, payload) => {
       state.posts = payload;
-    })
+    },
   },
   actions: {
-    async getPosts(context: ActionContext<PostsState, RootState>, {
-      start = 0,
-      limit = 10
-    }: { start: number; limit: number }): Promise<Post[]> {
-      const posts = await Http.get<Post[]>(`/posts?_start=${start}&_limit=${limit}`);
+    async getPosts(
+      context: ActionContext<PostsState, RootState>,
+      { start = 0, limit = 10 }: { start: number; limit: number }
+    ): Promise<Post[]> {
+      const posts = await Http.get<Post[]>(
+        `/posts?_start=${start}&_limit=${limit}`
+      );
       context.commit("setPosts", posts);
       return posts;
     },
@@ -37,6 +39,6 @@ export const postsModule: Module<PostsState, RootState> = {
       const comments = await Http.get<Comment[]>(`/posts/${id}/comments`);
 
       return { post, comments };
-    }
+    },
   },
 };

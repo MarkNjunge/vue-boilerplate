@@ -1,14 +1,7 @@
 <template>
   <div class="loader"></div>
 </template>
-<script>
-import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "Loader",
-  props: {},
-});
-</script>
 <style>
 .loader {
   width: 48px;

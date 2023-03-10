@@ -1,3 +1,6 @@
+/* eslint-env node */
+require("@rushstack/eslint-patch/modern-module-resolution");
+
 module.exports = {
   root: true,
   env: {
@@ -6,7 +9,7 @@ module.exports = {
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
-    "@vue/typescript/recommended",
+    "@vue/eslint-config-typescript",
   ],
   parserOptions: {
     ecmaVersion: 2020,
@@ -15,23 +18,12 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "vue/multi-word-component-names": "off",
+    "newline-per-chained-call": "off",
+    "arrow-parens": ["warn", "as-needed"],
+    "indent": ["warn", 2],
+    "@typescript-eslint/indent": ["warn", 2],
     "@typescript-eslint/no-empty-interface": "off",
-    indent: ["error", 2],
+    "@typescript-eslint/quotes": ["warn", "double"],
+    "@typescript-eslint/semi": ["warn", "always"],
   },
-  overrides: [
-    {
-      files: ["*.ts"],
-      extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "@marknjunge/eslint-config-ts"
-      ],
-      rules: {
-        "no-console": "off"
-      },
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ["./tsconfig.json"],
-      },
-    }
-  ]
 };
