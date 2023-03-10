@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import type { Banner } from "@/types";
 
-defineProps<{ banner: Banner }>();
+const props = defineProps<{ banner: Banner }>();
+
+const bgClass = {
+  "bg-green-400": props.banner.type === "info",
+  "bg-[#F45B5B]": props.banner.type === "error",
+};
+
+const textClass = {
+  "text-[#082B16]": props.banner.type === "info",
+  "text-[#160303]": props.banner.type === "error",
+};
 </script>
 
 <template>
   <div
-    class="banner w-[500px] fade py-2 px-4 my-2 rounded flex justify-between items-center"
-    :class="{
-      'bg-green-400': banner.type === 'info',
-      'bg-red-400': banner.type === 'error',
-    }"
+    class="banner w-[500px] fade py-2 px-4 rounded flex justify-between items-center"
+    :class="bgClass"
   >
-    <p class="font-bold text-md text-gray-900">{{ banner.message }}</p>
+    <p class="font-bold text-md" :class="textClass">{{ banner.message }}</p>
     <div class="">
       <svg
         class="cursor-pointer w-6 h-6"

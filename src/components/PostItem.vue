@@ -3,12 +3,9 @@ defineProps<{ post: any }>();
 </script>
 
 <template>
-  <div class="p-4 bg-back-light rounded">
-    <router-link
-      :to="{ name: 'post', params: { id: post.id } }"
-      class="text-xl hover:text-brand-400"
-      >{{ post.title }}
-    </router-link>
-    <p class="text-secondary">{{ post.body }}</p>
-  </div>
+  <router-link :id="`post-${post.id}`" :to="{ name: 'post', params: { id: post.id } }"
+               class="post px-4 py-6 rounded hover:bg-back-light hover:text-brand-400">
+    <div class="text-2xl">{{ post.title }}</div>
+    <p class="mt-2 text-secondary">{{ post.body }}</p>
+  </router-link>
 </template>

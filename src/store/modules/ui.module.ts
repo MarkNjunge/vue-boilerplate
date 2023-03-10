@@ -16,7 +16,7 @@ export const uiModule: Module<UiState, RootState> = {
   },
   mutations: {
     addBanner: (state, { type, message, timeout }: Banner) => {
-      const id = Math.floor(parseInt(Math.random().toFixed(4)) * 10000);
+      const id = parseFloat(Math.random().toFixed(3)) * 1000;
       state.banners.push({
         id,
         type,

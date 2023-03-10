@@ -17,14 +17,14 @@ loading.value = false;
 </script>
 
 <template>
-  <div id="home" class="mt-4 flex flex-col items-center">
-    <h3 class="text-2xl">Posts</h3>
-    <div class="flex flex-col w-[800px] mt-2 mb-4">
+  <div id="home" class="my-8 flex flex-col items-center">
+    <h3 class="text-5xl font-bold">Posts</h3>
+    <div class="flex flex-col w-[900px] mt-4 mb-4">
       <PostItem
-        class="mb-4"
-        v-for="(post, ix) in posts"
-        :key="ix"
-        :post="post"
+          class="home-post"
+          v-for="(post, ix) in posts"
+          :key="ix"
+          :post="post"
       />
     </div>
     <div v-if="loading">
@@ -32,3 +32,13 @@ loading.value = false;
     </div>
   </div>
 </template>
+
+
+<style lang="scss">
+.home-post {
+  &:not(:last-of-type) {
+    @apply border-b border-back-light;
+  }
+}
+</style>
+

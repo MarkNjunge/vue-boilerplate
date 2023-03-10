@@ -17,10 +17,11 @@ function removeBanner(banner) {
 <template>
   <Symbols />
   <div id="banners" class="sticky top-[0] flex flex-col items-center z-[99]">
-    <div class="absolute flex flex-col">
+    <div class="absolute flex flex-col mt-4">
       <Banner
-        v-for="(banner, ix) in banners"
-        :key="ix"
+          class="mb-4"
+        v-for="banner in banners"
+        :key="banner.id"
         :banner="banner"
         v-on:removeBanner="removeBanner"
       />

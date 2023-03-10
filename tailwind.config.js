@@ -6,24 +6,23 @@ module.exports = {
     extend: {
       colors: {
         back: {
-          ...colors.neutral,
-          DEFAULT: colors.neutral["800"],
-          dark: colors.neutral["900"],
-          light: colors.neutral["700"],
-          lighter: colors.neutral["600"],
+          DEFAULT: "#141824",
+          dark: "#10141E",
+          light: "#171D2B",
+          lighter: "#1E2638",
         },
         brand: {
-          ...colors.indigo,
-          DEFAULT: colors.indigo["600"],
+          ...colors.sky,
+          DEFAULT: colors.sky["600"],
         },
         onBrand: {
-          DEFAULT: colors.zinc["200"],
+          DEFAULT: colors.zinc["50"],
         },
       },
       textColor: {
-        primary: colors.neutral["200"],
-        secondary: colors.neutral["400"],
-        tertiary: colors.neutral["500"],
+        primary: colors.neutral["100"],
+        secondary: "#FFFFFF70",
+        tertiary: "#FFFFFF30",
       },
     },
   },

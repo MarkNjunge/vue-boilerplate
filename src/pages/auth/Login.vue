@@ -16,9 +16,9 @@ async function signIn() {
 </script>
 
 <template>
-  <div id="login" class="flex flex-col items-center">
-    <h3 class="text-3xl mt-8">Login</h3>
-    <div class="form w-[400px] mt-8 p-4 border border-back-light rounded">
+  <div id="login" class="mt-8 flex flex-col items-center">
+    <h3 class="text-5xl font-bold">Login</h3>
+    <div class="form w-[500px] mt-8 p-4 border border-back-light rounded">
       <div class="form-group">
         <label for="username" class="form-label">Username</label>
         <input
@@ -43,8 +43,11 @@ async function signIn() {
       </div>
       <button @click="signIn" class="button mt-8 w-full">Sign In</button>
     </div>
-    <router-link :to="{ name: 'home' }" class="mt-8 hover:text-brand-400"
-      >Back Home</router-link
-    >
+    <router-link :to="{ name: 'home' }" class="mt-8 flex items-center hover:text-brand-400">
+      <svg class="w-4 h-4">
+        <use href="#back" />
+      </svg>
+      <p class="ml-2">Home</p>
+    </router-link>
   </div>
 </template>
