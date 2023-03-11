@@ -15,8 +15,11 @@ const posts = computed(() => store.getters["posts/posts"]);
 let loading = ref(false);
 
 loading.value = true;
-store.dispatch("posts/getPosts", {}).catch(errorHandler);
-loading.value = false;
+store.dispatch("posts/getPosts", {})
+  .then(() => {
+    loading.value = false;
+  })
+  .catch(errorHandler);
 </script>
 
 <template>
