@@ -6,6 +6,7 @@ import AuthShell from "@/pages/auth/_auth.shell.vue";
 
 declare module "vue-router" {
   interface RouteMeta {
+    title: string;
     requiresAuth?: boolean;
     skipWhenAuthed?: boolean;
   }
@@ -20,12 +21,16 @@ const routes: Array<RouteRecordRaw> = [
         path: "",
         name: "home",
         component: async () => import("../pages/Home.vue"),
+        meta: {
+          title: "Vue Boilerplate",
+        },
       },
       {
         path: "/post/:id",
         name: "post",
         component: async () => import("../pages/Post.vue"),
         meta: {
+          title: "Post - VB",
           requiresAuth: true,
         },
       },
@@ -40,6 +45,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "login",
         component: async () => import("../pages/auth/Login.vue"),
         meta: {
+          title: "Login - VB",
           skipWhenAuthed: true,
         },
       },
@@ -66,6 +72,10 @@ router.beforeEach(async to => {
   } else {
     return true;
   }
+});
+
+router.afterEach(to => {
+  document.title = to.meta.title;
 });
 
 export default router;

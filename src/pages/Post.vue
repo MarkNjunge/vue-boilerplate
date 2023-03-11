@@ -14,6 +14,7 @@ const post: Ref<Post | null> = ref(null);
 const comments = ref([]);
 
 onMounted(async () => {
+  document.title = `Post ${id.value} - VB`;
   const res = await store.dispatch("posts/getPost", { id: id.value });
   post.value = res.post;
   comments.value = res.comments;
