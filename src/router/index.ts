@@ -52,7 +52,7 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async to => {
   const isSignedIn: boolean = await store.getters["auth/isSignedIn"];
 
   if (to.meta.requiresAuth === true && !isSignedIn) {
@@ -60,11 +60,11 @@ router.beforeEach(async (to, from, next) => {
       type: "error",
       message: "Login is required",
     });
-    next({ name: "login", replace: true });
+    return { name: "login" };
   } else if (to.meta.skipWhenAuthed === true && isSignedIn) {
-    next({ name: "home", replace: true });
+    return { name: "home" };
   } else {
-    next();
+    return true;
   }
 });
 
