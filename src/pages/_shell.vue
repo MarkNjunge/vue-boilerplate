@@ -26,6 +26,7 @@ const isSignedIn = computed(() => store.getters["auth/isSignedIn"]);
       <router-link :to="{ name: 'login' }" v-if="!isSignedIn"
                    class="text-lg mx-4 font-bold hover:text-brand-300"
       >LOGIN</router-link>
+      <p class="text-lg mx-4 font-bold" v-else>{{ $translate('greetings.hello') }}</p>
     </nav>
   </div>
   <div class="container mx-auto">
