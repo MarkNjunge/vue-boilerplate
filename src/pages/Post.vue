@@ -3,19 +3,19 @@ import Comment from "@/components/Comment.vue";
 import { ref, onMounted } from "vue";
 import type { Ref } from "vue";
 import { useRoute } from "vue-router";
-import { useStore } from "vuex";
-import type { Post } from "@/types";
+import type { Post, Comment as CommentType } from "@/types";
+import { usePostsStore } from "@/store";
 
-const store = useStore();
 const route = useRoute();
+const postStore = usePostsStore();
 
-const id = ref(route.params.id);
+const id = route.params.id as string;
 const post: Ref<Post | null> = ref(null);
-const comments = ref([]);
+const comments: Ref<CommentType[]> = ref([]);
 
 onMounted(async () => {
-  document.title = `Post ${id.value} - VB`;
-  const res = await store.dispatch("posts/getPost", { id: id.value });
+  document.title = `Post ${id} - VB`;
+  const res = await postStore.getPost(id);
   post.value = res.post;
   comments.value = res.comments;
 });

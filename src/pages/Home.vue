@@ -3,23 +3,24 @@ import PostItem from "@/components/PostItem.vue";
 import Loader from "@/components/Loader.vue";
 import { errorHandler } from "@/utils";
 import { computed, ref } from "vue";
-import { useStore } from "vuex";
 import { useMouse } from "@/utils/mouse";
+import { usePostsStore } from "@/store";
 
-const store = useStore();
+const postsStore = usePostsStore();
 
 const mouse = useMouse();
 
-const posts = computed(() => store.getters["posts/posts"]);
+const posts = computed(() => postsStore.posts);
 
 let loading = ref(false);
 
 loading.value = true;
-store.dispatch("posts/getPosts", {})
+postsStore.getPosts({})
   .then(() => {
     loading.value = false;
   })
   .catch(errorHandler);
+
 </script>
 
 <template>
@@ -40,7 +41,7 @@ store.dispatch("posts/getPosts", {})
         </div>
       </div>
     </Transition>
-    <p class="text-tertiary">Mouse is at {{mouse.x}} - {{mouse.y}}</p>
+    <p class="text-tertiary">Mouse is at {{mouse.x}}, {{mouse.y}}</p>
   </div>
 </template>
 

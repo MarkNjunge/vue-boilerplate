@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/store";
 
-const store = useStore();
 const router = useRouter();
+const authStore = useAuthStore();
 
 const username = ref("");
 const password = ref("");
 
 async function signIn() {
-  await store.dispatch("auth/signIn", true);
+  authStore.signIn();
   await router.push({ name: "home" });
 }
 </script>

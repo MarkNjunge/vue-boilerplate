@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
-import store from "@/store";
 import Shell from "@/pages/_shell.vue";
 import AuthShell from "@/pages/auth/_auth.shell.vue";
+import { useAuthStore, useBannerStore } from "@/store";
 
 declare module "vue-router" {
   interface RouteMeta {
@@ -59,13 +59,13 @@ const router = createRouter({
 });
 
 router.beforeEach(async to => {
-  const isSignedIn: boolean = await store.getters["auth/isSignedIn"];
+  const authStore = useAuthStore();
+  const isSignedIn = authStore.isSignedIn;
+
+  const bannerStore = useBannerStore();
 
   if (to.meta.requiresAuth === true && !isSignedIn) {
-    store.commit("ui/addBanner", {
-      type: "error",
-      message: "Login is required",
-    });
+    bannerStore.addBanner("error", "Login is required");
     return { name: "login" };
   } else if (to.meta.skipWhenAuthed === true && isSignedIn) {
     return { name: "home" };

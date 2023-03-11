@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { useStore } from "vuex";
+import { ref } from "vue";
+import { useAuthStore } from "@/store";
+import { storeToRefs } from "pinia";
 
-const store = useStore();
+const authStore = useAuthStore();
+
+const { isSignedIn } = storeToRefs(authStore);
 
 const navs = ref([{ title: "HOME", to: { name: "home" } }]);
-
-const isSignedIn = computed(() => store.getters["auth/isSignedIn"]);
 </script>
 
 <template>

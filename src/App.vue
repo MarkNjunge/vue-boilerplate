@@ -1,33 +1,28 @@
 <script setup lang="ts">
-import { useStore } from "vuex";
 import Banner from "@/components/Banner.vue";
 import Symbols from "@/components/Symbols.vue";
-import { computed } from "vue";
-
-const store = useStore();
+import { useBannerStore } from "@/store";
+import { storeToRefs } from "pinia";
 
 // Banners
-const banners = computed(() => store.getters["ui/banners"]);
+const bannerStore = useBannerStore();
+const { banners } = storeToRefs(bannerStore);
 
-function removeBanner(banner) {
-  store.commit("ui/removeBanner", banner.id);
-}
 </script>
 
 <template>
-  <Symbols />
+  <Symbols/>
   <div id="banners" class="sticky top-[0] flex flex-col items-center z-[99]">
     <div class="absolute flex flex-col mt-4">
       <Banner
           class="mb-4"
-        v-for="banner in banners"
-        :key="banner.id"
-        :banner="banner"
-        v-on:removeBanner="removeBanner"
+          v-for="banner in banners"
+          :key="banner.id"
+          :banner="banner"
       />
     </div>
   </div>
-  <router-view />
+  <router-view/>
 </template>
 
 <style lang="scss">

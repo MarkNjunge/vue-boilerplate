@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { Banner } from "@/types";
+import { useBannerStore } from "@/store";
 
-const props = defineProps<{ banner: Banner }>();
+const bannerStore = useBannerStore();
+
+const props = defineProps<{ banner:  Banner }>();
 
 const bgClass = {
   "bg-green-400": props.banner.type === "info",
@@ -12,6 +15,10 @@ const textClass = {
   "text-[#082B16]": props.banner.type === "info",
   "text-[#160303]": props.banner.type === "error",
 };
+
+function removeBanner() {
+  bannerStore.removeBanner(props.banner.id as number);
+}
 </script>
 
 <template>
@@ -23,7 +30,7 @@ const textClass = {
     <div class="">
       <svg
         class="cursor-pointer w-6 h-6"
-        @click="$emit('removeBanner', banner)"
+        @click="removeBanner"
       >
         <use href="#close" />
       </svg>

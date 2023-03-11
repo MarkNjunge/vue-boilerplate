@@ -1,4 +1,4 @@
-import store from "@/store";
+import { useBannerStore } from "@/store";
 
 export function errorHandler(error: Error) {
   console.log(error.message);
@@ -6,17 +6,11 @@ export function errorHandler(error: Error) {
 }
 
 export function infoBanner(message: string, timeout: number = 3000) {
-  store.commit("ui/addBanner", {
-    type: "info",
-    message,
-    timeout,
-  });
+  const store = useBannerStore();
+  store.addBanner("info", message, timeout);
 }
 
 export function errorBanner(message: string, timeout: number = 3000) {
-  store.commit("ui/addBanner", {
-    type: "info",
-    message,
-    timeout,
-  });
+  const store = useBannerStore();
+  store.addBanner("error", message, timeout);
 }
