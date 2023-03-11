@@ -4,8 +4,11 @@ import Loader from "@/components/Loader.vue";
 import { errorHandler } from "@/utils";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import { useMouse } from "@/utils/mouse";
 
 const store = useStore();
+
+const mouse = useMouse();
 
 const posts = computed(() => store.getters["posts/posts"]);
 
@@ -30,6 +33,7 @@ loading.value = false;
     <div v-if="loading">
       <Loader />
     </div>
+    <p class="text-tertiary">Mouse is at {{mouse.x}} - {{mouse.y}}</p>
   </div>
 </template>
 
