@@ -1,0 +1,24 @@
+name: Main Workflow
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.15.0"
+      - name: Install dependencies
+        env:
+          CI: true
+        run: npm ci
+      - name: Run lint
+        env:
+          CI: true
+        run: npm run lint
+      - name: Run build
+        env:
+          CI: true
+        run: npm run build
