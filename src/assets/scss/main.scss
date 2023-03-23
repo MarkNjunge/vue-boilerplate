@@ -1,3 +1,19 @@
 @import "fonts";
 @import "form";
 @import "transition";
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  @apply bg-back-light;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-back-lighter;
+}
