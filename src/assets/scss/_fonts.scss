@@ -1,9 +1,33 @@
 @font-face {
   font-family: "ClarityCity";
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto;
+  src: url("@/assets/fonts/ClarityCity/ClarityCity-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ClarityCity";
   font-weight: 400;
   font-style: normal;
   font-display: auto;
   src: url("@/assets/fonts/ClarityCity/ClarityCity-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ClarityCity";
+  font-weight: 500;
+  font-style: normal;
+  font-display: auto;
+  src: url("@/assets/fonts/ClarityCity/ClarityCity-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "ClarityCity";
+  font-weight: 600;
+  font-style: normal;
+  font-display: auto;
+  src: url("@/assets/fonts/ClarityCity/ClarityCity-SemiBold.woff2") format("woff2");
 }
 
 @font-face {
