@@ -1,4 +1,4 @@
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 import type { Ref } from "vue";
 import { useEventListener } from "@/utils/use-event-listener";
 

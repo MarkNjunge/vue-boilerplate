@@ -1,45 +1,14 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "vite.config.ts","src/**/*", "src/**/*.vue"],
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "baseUrl": ".",
-//    "types": [
-//      "webpack-env"
-//    ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
-  "_include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "files": [],
   "references": [
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true
+  }
 }
