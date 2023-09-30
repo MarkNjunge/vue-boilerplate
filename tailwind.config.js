@@ -6,10 +6,10 @@ module.exports = {
     extend: {
       colors: {
         back: {
-          DEFAULT: "#141824",
-          dark: "#10141E",
-          light: "#171D2B",
-          lighter: "#1E2638",
+          DEFAULT: "#202023",
+          dark: "#18181b",
+          light: "#27272A",
+          lighter: "#333338",
         },
         brand: {
           ...colors.sky,
