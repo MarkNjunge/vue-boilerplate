@@ -18,7 +18,7 @@ async function signIn() {
 <template>
   <div id="login" class="mt-8 flex flex-col items-center">
     <h3 class="text-5xl font-bold">Login</h3>
-    <div class="form w-[500px] mt-8 p-4 border border-back-light rounded">
+    <div class="form w-[500px] mt-8 p-4  border border-surface-border rounded">
       <div class="form-group">
         <label for="username" class="form-label">Username</label>
         <input

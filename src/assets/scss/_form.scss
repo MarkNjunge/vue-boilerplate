@@ -8,10 +8,10 @@
 
 .form-input,
 input {
-  @apply mt-1 py-[6px] px-[10px] text-primary rounded bg-back-light border border-back-light w-full;
+  @apply mt-1 py-[6px] px-[10px] text-primary rounded bg-input border border-input-border w-full;
 
   &:focus {
-    @apply border-back-lighter outline-none;
+    @apply border-input-focus outline-none;
   }
 
   &:disabled {

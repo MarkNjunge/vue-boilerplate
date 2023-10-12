@@ -49,7 +49,7 @@ postsStore.getPosts({})
 <style lang="scss">
 .home-post {
   &:not(:last-of-type) {
-    @apply border-b border-back-light;
+    @apply border-b border-surface-border;
   }
 }
 </style>

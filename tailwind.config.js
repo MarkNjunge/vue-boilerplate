@@ -6,10 +6,11 @@ module.exports = {
     extend: {
       colors: {
         back: {
-          DEFAULT: "#202023",
-          dark: "#18181b",
-          light: "#27272A",
-          lighter: "#333338",
+          DEFAULT: "#202023"
+        },
+        surface: {
+          DEFAULT: "#27272A",
+          border: "#2C2C30"
         },
         brand: {
           ...colors.sky,
@@ -18,6 +19,15 @@ module.exports = {
         onBrand: {
           DEFAULT: colors.zinc["50"],
         },
+        input: {
+          DEFAULT: "#27272A",
+          border: "#2C2C30",
+          focus: "#4C4C52"
+        },
+        scrollbar: {
+          thumb: "#3B3B40",
+          track: "#27272A"
+        }
       },
       textColor: {
         primary: colors.neutral["100"],

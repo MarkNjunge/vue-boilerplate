@@ -4,16 +4,17 @@
 
 html {
   scrollbar-gutter: stable;
+  scrollbar-width: thin; // Firefox
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 0.5em;
 }
 
 body::-webkit-scrollbar-track {
-  @apply bg-back-light;
+  @apply bg-scrollbar-track;
 }
 
 body::-webkit-scrollbar-thumb {
-  @apply bg-back-lighter;
+  @apply bg-scrollbar-thumb;
 }

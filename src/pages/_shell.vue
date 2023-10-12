@@ -12,7 +12,7 @@ const navs = ref([{ title: "HOME", to: { name: "home" } }]);
 
 <template>
   <div
-    class="bg-back-light h-[48px] flex items-center shadow border-b border-back-lighter"
+    class="h-[48px] flex items-center shadow border-b border-surface-border"
   >
     <nav class="flex container mx-auto justify-between">
       <div class="r">
