@@ -6,6 +6,14 @@ import { ref } from "vue";
 export const useBannerStore = defineStore("banner", () => {
   const banners: Ref<Banner[]> = ref([]);
 
+  function info(message: string, timeout: number = 3000) {
+    addBanner("info", message, timeout);
+  }
+
+  function error(message: string, timeout: number = 3000) {
+    addBanner("error", message, timeout);
+  }
+
   function addBanner(type: BannerType, message: string, timeout: number = 3000) {
     const id = parseFloat(Math.random().toFixed(3)) * 1000;
     banners.value.push({
@@ -29,5 +37,5 @@ export const useBannerStore = defineStore("banner", () => {
     }
   }
 
-  return { banners, addBanner, removeBanner };
+  return { info, error, banners, addBanner, removeBanner };
 });

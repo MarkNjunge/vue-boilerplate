@@ -4,7 +4,7 @@ import { useBannerStore } from "@/store";
 
 const bannerStore = useBannerStore();
 
-const props = defineProps<{ banner:  Banner }>();
+const props = defineProps<{ banner: Banner }>();
 
 const bgClass = {
   "bg-green-400": props.banner.type === "info",
@@ -26,15 +26,10 @@ function removeBanner() {
     class="banner w-[500px] fade py-2 px-4 rounded flex justify-between items-center"
     :class="bgClass"
   >
-    <p class="font-bold text-md" :class="textClass">{{ banner.message }}</p>
-    <div class="">
-      <svg
-        class="cursor-pointer w-6 h-6"
-        @click="removeBanner"
-      >
-        <use href="#close" />
-      </svg>
-    </div>
+    <p class="font-bold text-md flex-grow w-full" :class="textClass">{{ banner.message }}</p>
+    <svg class="cursor-pointer w-6 h-6 " @click="removeBanner">
+      <use href="#close" />
+    </svg>
   </div>
 </template>
 
@@ -44,18 +39,11 @@ function removeBanner() {
 }
 
 @keyframes fadeInFromNone {
-  0% {
-    display: none;
+  from{
     opacity: 0;
   }
 
-  1% {
-    display: block;
-    opacity: 0;
-  }
-
-  100% {
-    display: block;
+  to {
     opacity: 1;
   }
 }
